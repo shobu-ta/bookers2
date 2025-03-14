@@ -1,0 +1,17 @@
+<div class="col-md-3">
+  <h2>User info</h2>
+  <img src="<%= user.avatar_url %>" class="img-fluid">
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <th>Introduction</th>
+      <td><%= user.introduction %></td>
+    </tr>
+  </table>
+  <a class="btn btn-outline-secondary btn-block" href="<%= edit_user_path(user) %>">
+    Edit User
+  </a>
+</div>
