@@ -1,6 +1,6 @@
 <div class="col-md-3">
   <h2>User info</h2>
-  <img src="<%= user.avatar_url %>" class="img-fluid">
+  <%= image_tag user.get_profile_image %>
   <table class="table">
     <tr>
       <th>Name</th>
