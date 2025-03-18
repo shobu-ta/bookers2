@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update]
-   
+  
   def edit
     @user = User.find(params[:id])
   end

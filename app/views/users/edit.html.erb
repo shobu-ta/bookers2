@@ -1,26 +1,23 @@
 <div>
    <h2>User info</h2>
-   <form enctype="multipart/form-data" action="/users/207637" accept-charset="UTF-8" method="post">
-      <input type="hidden" name="_method" value="patch" autocomplete="off">
-      <input type="hidden" name="authenticity_token" value="G84RCawyegTB6aScjtYDw_4lpVgH9eUcWXae9B73FSitCmZxjx2kwmAq8Ppvd0DfTBRcvCl0hZUoojm_pZcmLQ" autocomplete="off">
-
+   <%= form_with(model: current_user, url: user_path(current_user), method: :patch, html: { multipart: true }) do |f| %>
       <div>
-         <label for="user_name">Name</label>
-         <input type="text" value="shobu" name="user[name]" id="user_name">
+         <%= f.label :name, "Name" %>
+         <%= f.text_field :name, value: current_user.name %>
       </div>
 
       <div>
-         <label for="user_profile_image">Image</label>
-         <input accept="image/*" type="file" name="user[profile_image]" id="user_profile_image">
+         <%= f.label :profile_image, "Image" %>
+         <%= f.file_field :profile_image, accept: "image/*" %>
       </div>
 
       <div>
-         <label for="user_introduction">Introduction</label>
-         <textarea name="user[introduction]" id="user_introduction"></textarea>
+         <%= f.label :introduction, "Introduction" %>
+         <%= f.text_area :introduction, value: current_user.introduction %>
       </div>
 
       <div>
-         <input type="submit" name="commit" value="Update" data-disable-with="Update">
+         <%= f.submit "Update", data: { disable_with: "Update" } %>
       </div>
-   </form>
+   <% end %>
 </div>
