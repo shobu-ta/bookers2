@@ -1,37 +1,38 @@
 <h2>Book detail</h2>
 <table class="table">
-   <tbody>
-      <tr>
+  <tbody>
+    <tr>
       <td>
-      <%= link_to user_path(@book.user) do %>
-<%= image_tag(
-  @book.user.profile_image.attached? ? 
-  @book.user.profile_image.variant(resize: '100x100') : 
-  'default-image.jpg', 
-  alt: @book.user.name, 
-  class: "user-image"
-) %><br>
+        <%= link_to user_path(@book.user) do %>
+          <%= image_tag(
+            @book.user.profile_image.attached? ? 
+            @book.user.profile_image.variant(resize: '100x100') : 
+            'default-image.jpg', 
+            alt: @book.user.name, 
+            class: "user-image"
+          ) %><br>
 
-
-
-         <%= @book.user.name %>
-      <% end %>
-   </td>
+          <%= @book.user.name %>
+        <% end %>
+      </td>
    
-         <td>
-            <%= link_to @book.title, book_path(@book) %>
-         </td>
-         <td>
-            <%= @book.opinion %>
-         </td>
-         <td>
-  <% if current_user == @book.user %>
-    <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
-  </td>
-  <td>
-    <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %>
-  <% end %>
-</td>
-      </tr>
-   </tbody>
+      <td>
+        <%= link_to @book.title, book_path(@book) %>
+      </td>
+      
+      <td>
+        <%= @book.opinion %>
+      </td>
+      
+      <td>
+        <% if current_user == @book.user %>
+          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
+        </td>
+        
+        <td>
+          <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
 </table>

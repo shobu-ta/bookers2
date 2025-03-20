@@ -2,6 +2,7 @@
   <h2>User info</h2>
   <table class="table">
   <% if current_user %>
+    <%= image_tag(current_user.profile_image.attached? ? current_user.profile_image.variant(resize: '100x100') : 'default-image.jpg', size: '100x100', alt: 'Profile Image') %>
     <tr>
       <th>Name</th>
       <td><%= current_user.name %></td>
