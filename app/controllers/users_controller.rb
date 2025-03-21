@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update]
   
-  def edit
+   def edit
     @user = User.find(params[:id])
   end
 
@@ -15,13 +15,14 @@ class UsersController < ApplicationController
   end
     
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
-      redirect_to @user, notice: 'You have updated user successfully.'
+      redirect_to @user, notice: "Profile updated successfully!"
     else
-      render :edit
+      render :edit  # バリデーションエラー時に編集ページを再表示
     end
   end
+
 
   private
 
