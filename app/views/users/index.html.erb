@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <!-- 左側のカラム: User info と New book -->
-    <div class="col-md-3 offset-md-1">
+    <div class="col-md-3 ">
       <!-- User info セクション -->
       <h2>User info</h2>
       <table class="table">
@@ -42,8 +42,8 @@
           <%= f.text_area :title, class: "form-control" %>
         </div>
         <div class="form-group mt-3">
-          <%= f.label :opinion, "Opinion", class: "form-label" %>
-          <%= f.text_area :opinion, class: "form-control" %>
+          <%= f.label :body, "Opinion", class: "form-label" %>
+          <%= f.text_area :body, class: "form-control" %>
         </div>
         <div class="form-group mt-3">
           <%= f.submit "Create Book", class: "btn btn-success w-50", data: { disable_with: "Creating..." } %>
@@ -52,7 +52,7 @@
     </div>
 
     <!-- 右側のカラム: Users セクション -->
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <h1>Users</h1>
       <table class="table">
         <thead>

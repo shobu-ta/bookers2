@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update]
+  before_action :authenticate_user!
+
   
+
    def edit
     @user = User.find(params[:id])
   end
