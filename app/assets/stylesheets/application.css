@@ -13,3 +13,6 @@
  *= require_tree .
  *= require_self
  */
+ .navbar .nav-link {
+  color: white !important; /* 白色に強制設定 */
+}

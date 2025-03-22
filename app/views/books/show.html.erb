@@ -1,38 +1,86 @@
-<h2>Book detail</h2>
-<table class="table">
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to user_path(@book.user) do %>
-          <%= image_tag(
-            @book.user.profile_image.attached? ? 
-            @book.user.profile_image.variant(resize: '100x100') : 
-            'default-image.jpg', 
-            alt: @book.user.name, 
-            class: "user-image"
-          ) %><br>
+<div class="container">
+  <div class="row">
+    <!-- 左カラム: User Info と New Book -->
+    <div class="col-md-4">
+      <!-- User Info -->
+      <div class="mb-4">
+        <h2>User info</h2>
+        <table class="table">
+          <% if @book.user %>
+            <%= image_tag(
+                  @book.user.profile_image.attached? ?
+                  @book.user.profile_image.variant(resize: '100x100') :
+                  'default-image.jpg',
+                  size: '100x100',
+                  alt: @book.user.name,
+                  class: "user-image"
+                ) %>
+            <tr>
+              <th>Name</th>
+              <td><%= @book.user.name %></td>
+            </tr>
+            <tr>
+              <th>Introduction</th>
+              <td><%= @book.user.introduction %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
-          <%= @book.user.name %>
+      <!-- New Book Form -->
+      <div class="mt-3">
+        <h2>New book</h2>
+        <%= form_with model: @book do |f| %>
+          <div class="form-group">
+            <%= f.label :title, "Title", class: "form-label" %>
+            <%= f.text_area :title, class: "form-control", id: "book_title", value: "" %>
+          </div>
+          <div class="form-group mt-3">
+            <%= f.label :opinion, "Opinion", class: "form-label" %>
+            <%= f.text_area :opinion, class: "form-control", id: "book_opinion", rows: 2, value: "" %>
+          </div>
+          <div class="form-group mt-3">
+            <%= f.submit "Create Book", class: "btn btn-success w-50", data: { disable_with: "Creating..." } %>
+          </div>
         <% end %>
-      </td>
-   
-      <td>
-        <%= link_to @book.title, book_path(@book) %>
-      </td>
-      
-      <td>
-        <%= @book.opinion %>
-      </td>
-      
-      <td>
-        <% if current_user == @book.user %>
-          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
-        </td>
-        
-        <td>
-          <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+
+    <!-- 右カラム: Book detail -->
+    <div class="col-md-8">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to user_path(@book.user) do %>
+                <%= image_tag(
+                      @book.user.profile_image.attached? ?
+                      @book.user.profile_image.variant(resize: '100x100') :
+                      'default-image.jpg',
+                      alt: @book.user.name,
+                      class: "user-image"
+                    ) %><br>
+                <%= @book.user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to @book.title, book_path(@book) %>
+            </td>
+            <td>
+              <%= @book.opinion %>
+            </td>
+            <td>
+              <% if current_user == @book.user %>
+                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
+              </td>
+              <td>
+                <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
