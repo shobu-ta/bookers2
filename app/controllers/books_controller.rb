@@ -6,17 +6,18 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to @book, notice: 'Book was successfully created.'
     else
-      render :new
+      @books = Book.all
+      render :index
     end
   end
 
   def new
     @book = Book.new
+    @books = Book.all
   end
 
   def index
     @books = Book.all
-    @users = User.all
     @book = Book.new
     
   end

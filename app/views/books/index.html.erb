@@ -1,7 +1,16 @@
+<% if @book.errors.any? %>
+  <p><%= @book.errors.count %> errors prohibited this obj from being saved</p>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
   <div class="row">
     <!-- 左カラム: User info と New book -->
-    <div class="col-md-4">
+    <div class="col-md-3  offset-md-1">
       <!-- User info セクション -->
       <h2>User info</h2>
       <table class="table">
@@ -57,12 +66,13 @@
           <% @books.each do |book| %>
             <tr>
               <td>
-                <% user = @users.find_by(id: book.user_id) %>
-                <% if user && user.profile_image.attached? %>
-                  <%= image_tag user.profile_image.variant(resize: '100x100') %>
-                <% else %>
-                  <%= image_tag 'default-image.jpg', size: '100x100' %>
-                <% end %>
+                <%= image_tag book.user.get_profile_image %>
+                <%# user = @users.find_by(id: book.user_id) %>
+                <%# if user && user.profile_image.attached? %>
+                  <%#= image_tag user.profile_image.variant(resize: '100x100') %>
+                <%# else %>
+                  <%#= image_tag 'default-image.jpg', size: '100x100' %>
+                <%# end %>
               </td>
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.opinion %></td>
