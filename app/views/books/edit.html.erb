@@ -1,19 +1,16 @@
-
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
       
       <% if @book.errors.any? %>
-  
-    <p><%= pluralize(@book.errors.count, "error") %> prevented this book from being saved:</p>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <p><%= pluralize(@book.errors.count, "error") %> prevented this book from being saved:</p>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       <% end %>
-    </ul>
-  
-<% end %>
 
       <%= form_with(model: @book, local: true) do |f| %>
         <div class="form-group">

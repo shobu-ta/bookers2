@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <!-- 左側のカラム: User info と New book -->
-    <div class="col-md-3 ">
+    <div class="col-md-3">
       <!-- User info セクション -->
       <h2>User info</h2>
       <table class="table">
@@ -21,16 +21,15 @@
             <th>Introduction</th>
             <td><%= current_user.introduction %></td>
           </tr>
-         <tr>
-  <td>
-    <div class="row">
-      <a class="btn btn-outline-secondary w-100" href="<%= edit_user_path(current_user) %>">
-        <i class="fa-solid fa-user-gear"></i>
-      </a>
-    </div>
-  </td>
-</tr>
-
+          <tr>
+            <td>
+              <div class="row">
+                <a class="btn btn-outline-secondary w-100" href="<%= edit_user_path(current_user) %>">
+                  <i class="fa-solid fa-user-gear"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
         <% end %>
       </table>
 
